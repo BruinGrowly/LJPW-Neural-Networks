@@ -78,42 +78,52 @@ print(scores)
 ### Installation
 
 ```bash
-# Clone and install from source
+# Clone the repository
 git clone https://github.com/BruinGrowly/LJPW-Neural-Networks.git
 cd LJPW-Neural-Networks
-pip install -e .
 
-# Or install dependencies directly
+# Install dependencies
 pip install -r requirements.txt
+
+# Add to Python path
+export PYTHONPATH=$PWD:$PYTHONPATH
 ```
 
 ### Basic Usage
 
 ```python
-import numpy as np
-from ljpw_nn import NaturalMNIST
-from ljpw_nn.metrics import measure_harmony
+import sys
+sys.path.insert(0, '.')  # If not using PYTHONPATH
 
-# Create a natural neural network
-model = NaturalMNIST(
-    architecture='fibonacci',    # Use Fibonacci layer sizes
-    activations='diverse',        # Use diverse activations
-    documentation='excellent'     # Full documentation
-)
+from ljpw_nn import NaturalMNIST
+from examples.mnist_loader import load_mnist
+
+# Load MNIST data
+X_train, y_train, X_test, y_test = load_mnist()
+
+# Create a natural neural network with Fibonacci layers
+model = NaturalMNIST()
 
 # Train on MNIST
-model.fit(X_train, y_train, epochs=10)
+history = model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test))
 
-# Evaluate harmony (not just accuracy!)
-scores = measure_harmony(model, X_test, y_test)
-print(f"Accuracy: {scores.P:.2%}")
-print(f"Harmony:  {scores.H:.2f}")  # This is what matters
+# Evaluate
+accuracy = model.evaluate(X_test, y_test)
+print(f"Test Accuracy: {accuracy:.2%}")
 
-# Predictions
+# Measure harmony (not just accuracy!)
+scores = model.measure_harmony(X_test, y_test)
+print(f"Harmony: {scores.H:.2f}")  # This is what matters
+
+# Make predictions
 predictions = model.predict(X_test)
 ```
 
-**Result: 93% accuracy with H=0.79 (vs traditional 93% accuracy with H=0.57)**
+**Architecture**: Fibonacci layers (89→34→13→10) with diverse activations (ReLU, Swish, Tanh)
+
+**See `examples/simple_mnist_demo.py` for a complete working example.**
+
+> **Note**: The library is in active development (v0.1.0-alpha). The forward pass and model structure are fully implemented. Backpropagation training is a work in progress - the model currently demonstrates the architecture and harmony measurement system. See `CODEBASE_ANALYSIS.md` for detailed status.
 
 ---
 
@@ -340,22 +350,27 @@ print(scores)
 **Current**: v0.1.0-alpha (in development)
 
 **Completed**:
-- ✅ Experimental validation (MNIST)
-- ✅ Ablation studies (know what matters)
-- ✅ Design philosophy (documentation-first)
-- ✅ Core architecture (library structure)
+- ✅ Package reorganization (proper Python structure)
+- ✅ FibonacciLayer implementation (H=0.80)
+- ✅ DiverseActivation implementation (H=0.80)
+- ✅ HarmonyMetrics system (measure_harmony, HarmonyScores)
+- ✅ NaturalMNIST model class
+- ✅ Working examples (validate_fibonacci.py, validate_diverse.py, simple_mnist_demo.py)
+- ✅ MNIST data loader with fallback
+- ✅ Development guide (DEVELOPMENT.md)
+- ✅ Comprehensive analysis (CODEBASE_ANALYSIS.md)
 
 **In Progress**:
-- 🔨 FibonacciLayer implementation
-- 🔨 DiverseActivation implementation
-- 🔨 HarmonyMetrics system
-- 🔨 NaturalMNIST complete model
+- 🔨 Backpropagation training (currently simplified)
+- 🔨 Advanced components integration
+- 🔨 Additional examples and tutorials
 
 **Planned**:
-- 📋 Comprehensive examples
-- 📋 Extended documentation
-- 📋 PyPI package
-- 📋 v1.0.0 release
+- 📋 Complete training implementation with gradient descent
+- 📋 Extended documentation and API reference
+- 📋 setup.py fixes for pip installation
+- 📋 PyPI package release
+- 📋 v1.0.0 production release
 
 **Going slow. Quality over speed. Harmony over hype.**
 
