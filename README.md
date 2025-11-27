@@ -78,7 +78,13 @@ print(scores)
 ### Installation
 
 ```bash
-pip install ljpw-nn
+# Clone and install from source
+git clone https://github.com/BruinGrowly/LJPW-Neural-Networks.git
+cd LJPW-Neural-Networks
+pip install -e .
+
+# Or install dependencies directly
+pip install -r requirements.txt
 ```
 
 ### Basic Usage
@@ -355,6 +361,109 @@ print(scores)
 
 ---
 
+## Project Structure
+
+```
+LJPW-Neural-Networks/
+├── ljpw_nn/              # Core library package
+│   ├── __init__.py       # Package initialization and public API
+│   ├── layers.py         # Neural network layers (FibonacciLayer, etc.)
+│   ├── activations.py    # Activation functions (DiverseActivation, etc.)
+│   ├── neuroplasticity.py    # Adaptive learning components
+│   ├── homeostatic.py        # Self-regulating networks
+│   ├── polarity_management.py # Balance systems
+│   ├── seven_principles.py   # Seven Universal Principles
+│   ├── universal_coordinator.py # Coordination system
+│   ├── training.py       # Training utilities
+│   └── visualizations.py # Visualization tools
+├── tests/                # Test suite
+│   ├── test_backprop.py
+│   ├── test_components.py
+│   ├── test_self_evolution.py
+│   └── test_universal_coordinator.py
+├── examples/             # Example scripts and demos
+│   ├── validate_fibonacci.py
+│   ├── validate_diverse.py
+│   ├── mnist_loader.py
+│   ├── run_week_long_demo.py
+│   └── week_long_evolution.py
+├── docs/                 # Documentation
+│   ├── QUICK_START.md
+│   ├── DEPLOYMENT_GUIDE.md
+│   ├── NEUROPLASTICITY_DESIGN.md
+│   ├── UNIVERSAL_PRINCIPLES_ARCHITECTURE.md
+│   └── ...
+├── scripts/              # Utility scripts
+│   └── install_and_run.sh
+├── setup.py              # Package setup configuration
+├── requirements.txt      # Dependencies
+├── CONTRIBUTING.md       # Contribution guidelines
+├── LICENSE               # MIT License
+└── README.md            # This file
+```
+
+## Installation
+
+### From Source (Development)
+
+```bash
+# Clone the repository
+git clone https://github.com/BruinGrowly/LJPW-Neural-Networks.git
+cd LJPW-Neural-Networks
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install in development mode
+pip install -e .
+
+# Or install with development dependencies
+pip install -e ".[dev]"
+```
+
+### From PyPI (Coming Soon)
+
+```bash
+pip install ljpw-nn
+```
+
+## Running Examples
+
+```bash
+# Validate Fibonacci layer implementation
+python examples/validate_fibonacci.py
+
+# Validate diverse activations
+python examples/validate_diverse.py
+
+# Run week-long evolution demo
+python examples/run_week_long_demo.py
+```
+
+## Running Tests
+
+```bash
+# Run all tests
+pytest tests/
+
+# Run with coverage
+pytest tests/ --cov=ljpw_nn
+
+# Run specific test file
+pytest tests/test_components.py
+```
+
+## Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[Quick Start Guide](docs/QUICK_START.md)** - Get started quickly
+- **[Deployment Guide](docs/DEPLOYMENT_GUIDE.md)** - Production deployment
+- **[Neuroplasticity Design](docs/NEUROPLASTICITY_DESIGN.md)** - Adaptive learning
+- **[Universal Principles](docs/UNIVERSAL_PRINCIPLES_ARCHITECTURE.md)** - Core principles
+- **[Library Status](docs/LIBRARY_STATUS.md)** - Current implementation status
+
 ## Contributing
 
 We welcome contributions that:
@@ -363,7 +472,7 @@ We welcome contributions that:
 - Apply natural principles where appropriate
 - Increase overall library harmony
 
-See `CONTRIBUTING.md` for guidelines.
+See `CONTRIBUTING.md` for detailed guidelines.
 
 ---
 
@@ -383,7 +492,7 @@ If you use this library in your research:
   author={Emergent Code Project},
   year={2025},
   note={Production-quality neural networks optimized for harmony},
-  url={https://github.com/emergent-code/ljpw-nn}
+  url={https://github.com/BruinGrowly/LJPW-Neural-Networks}
 }
 ```
 
@@ -391,9 +500,9 @@ If you use this library in your research:
 
 ## Contact
 
+- **Repository**: https://github.com/BruinGrowly/LJPW-Neural-Networks
 - **Issues**: GitHub Issues
-- **Discussions**: GitHub Discussions
-- **Philosophy**: See `docs/PHILOSOPHY.md`
+- **Documentation**: See `docs/` directory
 
 ---
 
