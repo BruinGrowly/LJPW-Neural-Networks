@@ -47,11 +47,11 @@ from .polarity_management import (
     PolarityState,
 )
 
-# Metrics (coming soon)
-# from ljpw_nn.metrics import measure_harmony, HarmonyScores
+# Metrics
+from .metrics import measure_harmony, HarmonyScores, NeuralNetworkLJPW
 
-# Complete models (coming soon)
-# from ljpw_nn.models import NaturalMNIST
+# Complete models
+from .models import NaturalMNIST, TrainingHistory
 
 __all__ = [
     'FibonacciLayer',
@@ -64,7 +64,9 @@ __all__ = [
     'ExcitationInhibitionBalance',
     'PolarityManager',
     'PolarityState',
-    # 'measure_harmony',
-    # 'HarmonyScores',
-    # 'NaturalMNIST',
+    'measure_harmony',
+    'HarmonyScores',
+    'NeuralNetworkLJPW',
+    'NaturalMNIST',
+    'TrainingHistory',
 ]

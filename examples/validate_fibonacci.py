@@ -9,13 +9,15 @@ This script validates that FibonacciLayer meets LJPW quality standards:
 """
 
 import sys
-sys.path.insert(0, '/home/user/Emergent-Code')
-sys.path.insert(0, '/home/user/Emergent-Code/experiments/natural_nn')
+from pathlib import Path
+
+# Add parent directory to path so we can import ljpw_nn
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import numpy as np
 from ljpw_nn.layers import FibonacciLayer, FIBONACCI
-from nn_ljpw_metrics import NeuralNetworkLJPW
-from real_mnist_loader import load_real_mnist
+from ljpw_nn.metrics import NeuralNetworkLJPW
+from examples.mnist_loader import load_mnist
 
 
 def evaluate_fibonacci_layer():
@@ -52,8 +54,17 @@ def evaluate_fibonacci_layer():
     print()
 
     # Load minimal MNIST for testing
-    X_train, y_train, X_test, y_test = load_real_mnist()
-    X_test_sample = X_test[:100]  # Small sample for validation
+    print("-" * 70)
+    print("LOADING MNIST DATA")
+    print("-" * 70)
+    X_train, y_train, X_test, y_test = load_mnist(
+        train_size=1000,  # Small sample for quick validation
+        test_size=100
+    )
+    print(f"Train set: {X_train.shape}")
+    print(f"Test set: {X_test.shape}")
+    print()
+    X_test_sample = X_test  # Already small sample
 
     # Test forward pass
     print("-" * 70)

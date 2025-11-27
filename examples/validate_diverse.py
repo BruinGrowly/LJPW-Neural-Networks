@@ -5,12 +5,14 @@ Validates that DiverseActivation meets LJPW quality standards (H > 0.7).
 """
 
 import sys
-sys.path.insert(0, '/home/user/Emergent-Code')
-sys.path.insert(0, '/home/user/Emergent-Code/experiments/natural_nn')
+from pathlib import Path
+
+# Add parent directory to path so we can import ljpw_nn
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import numpy as np
 from ljpw_nn.activations import DiverseActivation
-from nn_ljpw_metrics import NeuralNetworkLJPW
+from ljpw_nn.metrics import NeuralNetworkLJPW
 
 
 def evaluate_diverse_activation():
