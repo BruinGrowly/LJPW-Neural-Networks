@@ -28,19 +28,19 @@ License: MIT
 __version__ = '0.1.0-alpha'
 
 # Core layers
-from ljpw_nn.layers import FibonacciLayer
+from .layers import FibonacciLayer
 
 # Activation functions
-from ljpw_nn.activations import DiverseActivation
+from .activations import DiverseActivation
 
 # Neuroplasticity (adaptive components)
-from ljpw_nn.neuroplasticity import AdaptiveNaturalLayer, AdaptationEvent
+from .neuroplasticity import AdaptiveNaturalLayer, AdaptationEvent
 
 # Homeostatic networks (self-regulating)
-from ljpw_nn.homeostatic import HomeostaticNetwork, HarmonyCheckpoint
+from .homeostatic import HomeostaticNetwork, HarmonyCheckpoint
 
 # Polarity management (Universal Principle 3)
-from ljpw_nn.polarity_management import (
+from .polarity_management import (
     StabilityPlasticityBalance,
     ExcitationInhibitionBalance,
     PolarityManager,
