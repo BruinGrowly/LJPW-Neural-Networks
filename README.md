@@ -1,4 +1,4 @@
-# LJPW Natural Neural Networks
+# LJPW Neural Networks
 
 **Production-quality neural network components optimized for Harmony**
 
@@ -416,3 +416,4 @@ Traditional ML optimizes for **accuracy** (P).
 We optimize for **harmony** (H = √[4]{L·J·P·W}).
 
 **That's what makes us different.**
+
