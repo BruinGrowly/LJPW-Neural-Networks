@@ -323,9 +323,34 @@ class NaturalMNIST:
                 loss = -np.mean(np.sum(y_one_hot * np.log(probs + 1e-8), axis=1))
                 epoch_loss += loss
 
-                # Backward pass (simplified - just for demonstration)
-                # In production, implement proper backpropagation
-                # For now, we'll just track loss
+                # Backward pass - Proper backpropagation
+                # Gradient of cross-entropy loss w.r.t. softmax output
+                grad_probs = probs - y_one_hot  # (batch_size, 10)
+
+                # Backprop through output layer
+                # Get last hidden layer activation
+                last_hidden = self.layers[-1]._cache['a']
+
+                # Gradients for output layer
+                grad_output_weights = np.dot(last_hidden.T, grad_probs) / batch_size
+                grad_output_bias = np.sum(grad_probs, axis=0, keepdims=True) / batch_size
+
+                # Update output layer
+                self.output_weights -= self.learning_rate * grad_output_weights
+                self.output_bias -= self.learning_rate * grad_output_bias
+
+                # Gradient to last hidden layer
+                grad_hidden = np.dot(grad_probs, self.output_weights.T)
+
+                # Backprop through hidden layers (reverse order)
+                for i in range(len(self.layers) - 1, -1, -1):
+                    # Gradient through activation function
+                    z_cached = self.layers[i]._cache['z']
+                    activation_grad = self.activations[i].backward(z_cached)
+                    grad_z = grad_hidden * activation_grad
+
+                    # Backprop through layer (computes gradients and updates weights)
+                    grad_hidden = self.layers[i].backward(grad_z, self.learning_rate)
 
             # Calculate metrics
             train_loss = epoch_loss / n_batches
