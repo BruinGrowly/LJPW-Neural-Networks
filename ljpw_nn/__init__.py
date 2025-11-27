@@ -53,6 +53,9 @@ from .metrics import measure_harmony, HarmonyScores, NeuralNetworkLJPW
 # Complete models
 from .models import NaturalMNIST, TrainingHistory
 
+# Baseline models (for comparison)
+from .baseline import TraditionalMNIST
+
 __all__ = [
     'FibonacciLayer',
     'DiverseActivation',
@@ -68,5 +71,6 @@ __all__ = [
     'HarmonyScores',
     'NeuralNetworkLJPW',
     'NaturalMNIST',
+    'TraditionalMNIST',
     'TrainingHistory',
 ]
