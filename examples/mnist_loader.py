@@ -19,17 +19,17 @@ from pathlib import Path
 from typing import Tuple
 
 
-def load_mnist_from_url(data_dir: str = "data/mnist") -> Tuple:
+def load_mnist_from_url(data_dir: str = "data/mnist", source: str = "lecun") -> Tuple:
     """
-    Load MNIST directly from Yann LeCun's server.
+    Load MNIST directly from web sources.
 
     Args:
         data_dir: Directory to save/load MNIST data
+        source: 'lecun' (original), 'github' (mirror), or 'ossci' (PyTorch mirror)
 
     Returns:
         (X_train, y_train, X_test, y_test)
     """
-    base_url = "http://yann.lecun.com/exdb/mnist/"
     files = {
         'train_images': 'train-images-idx3-ubyte.gz',
         'train_labels': 'train-labels-idx1-ubyte.gz',
@@ -37,11 +37,23 @@ def load_mnist_from_url(data_dir: str = "data/mnist") -> Tuple:
         'test_labels': 't10k-labels-idx1-ubyte.gz'
     }
 
+    # Multiple source URLs
+    sources = {
+        'lecun': "http://yann.lecun.com/exdb/mnist/",
+        'github': "https://github.com/cvdfoundation/mnist/raw/main/",
+        'ossci': "https://ossci-datasets.s3.amazonaws.com/mnist/"
+    }
+
+    if source not in sources:
+        source = 'lecun'
+
+    base_url = sources[source]
+
     # Create directory
     data_path = Path(data_dir)
     data_path.mkdir(parents=True, exist_ok=True)
 
-    print("Downloading MNIST from Yann LeCun's server...")
+    print(f"Downloading MNIST from {source}...")
 
     # Download files
     downloaded = {}
@@ -51,7 +63,17 @@ def load_mnist_from_url(data_dir: str = "data/mnist") -> Tuple:
         if not filepath.exists():
             url = base_url + filename
             print(f"  Downloading {filename}...")
-            urllib.request.urlretrieve(url, filepath)
+            try:
+                # Set user agent to avoid blocks
+                req = urllib.request.Request(
+                    url,
+                    headers={'User-Agent': 'Mozilla/5.0'}
+                )
+                with urllib.request.urlopen(req) as response:
+                    with open(filepath, 'wb') as out_file:
+                        out_file.write(response.read())
+            except Exception as e:
+                raise Exception(f"Failed to download {filename}: {e}")
 
         downloaded[key] = filepath
 
@@ -257,7 +279,7 @@ def load_mnist(train_size: int = None, test_size: int = None,
     Tries in order:
     1. Keras/TensorFlow
     2. PyTorch
-    3. Direct download
+    3. Direct download (GitHub mirror → PyTorch mirror → LeCun's server)
     4. Enhanced synthetic
 
     Args:
@@ -277,12 +299,14 @@ def load_mnist(train_size: int = None, test_size: int = None,
             # Try PyTorch
             result = load_mnist_torch()
         if result is None:
-            # Try direct download
-            try:
-                result = load_mnist_from_url()
-            except Exception as e:
-                print(f"Could not download MNIST: {e}")
-                result = None
+            # Try direct download from multiple sources
+            for source in ['github', 'ossci', 'lecun']:
+                try:
+                    result = load_mnist_from_url(source=source)
+                    break  # Success!
+                except Exception as e:
+                    print(f"Could not download from {source}: {e}")
+                    result = None
 
         if result is None:
             # Fall back to synthetic
