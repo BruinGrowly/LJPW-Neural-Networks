@@ -50,6 +50,10 @@ from .polarity_management import (
 # Metrics
 from .metrics import measure_harmony, HarmonyScores, NeuralNetworkLJPW
 
+# Universal Principles analyzers
+from .coherence import CoherenceAnalyzer, SovereigntyAnalyzer
+from .semantics import MeaningActionAnalyzer, ResonanceAnalyzer
+
 # Complete models
 from .models import NaturalMNIST, TrainingHistory
 
@@ -70,6 +74,10 @@ __all__ = [
     'measure_harmony',
     'HarmonyScores',
     'NeuralNetworkLJPW',
+    'CoherenceAnalyzer',
+    'SovereigntyAnalyzer',
+    'MeaningActionAnalyzer',
+    'ResonanceAnalyzer',
     'NaturalMNIST',
     'TraditionalMNIST',
     'TrainingHistory',
