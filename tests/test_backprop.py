@@ -151,7 +151,8 @@ def test_simple_learning():
         print("✗ TEST FAILED: Network did not learn (improvement < 0.10)")
 
     print()
-    return history
+    # Assert for pytest
+    assert improvement > 0.10, f"Network did not learn enough: improvement={improvement:.4f}"
 
 
 def test_lov_network_learning():
@@ -245,7 +246,8 @@ def test_lov_network_learning():
         print("⚠ SOME TESTS FAILED")
 
     print()
-    return history
+    # Assert for pytest
+    assert all(tests_passed), f"LOV Network tests failed: learning={tests_passed[0]}, harmony={tests_passed[1]}"
 
 
 def test_spiral_dataset():
@@ -307,7 +309,8 @@ def test_spiral_dataset():
         print("⚠ TEST WARNING: Limited learning (spiral is hard)")
 
     print()
-    return history
+    # Assert for pytest (lower threshold for harder problem)
+    assert improvement > 0.15, f"Network did not learn spiral pattern: improvement={improvement:.4f}"
 
 
 def main():
