@@ -370,44 +370,44 @@ print(scores)
 
 ## Project Structure
 
-```
-LJPW-Neural-Networks/
-├── ljpw_nn/              # Core library package
-│   ├── __init__.py       # Package initialization and public API
-│   ├── layers.py         # Neural network layers (FibonacciLayer, etc.)
-│   ├── activations.py    # Activation functions (DiverseActivation, etc.)
-│   ├── neuroplasticity.py    # Adaptive learning components
-│   ├── homeostatic.py        # Self-regulating networks
-│   ├── polarity_management.py # Balance systems
-│   ├── seven_principles.py   # Seven Universal Principles
-│   ├── universal_coordinator.py # Coordination system
-│   ├── training.py       # Training utilities
-│   └── visualizations.py # Visualization tools
-├── tests/                # Test suite
-│   ├── test_backprop.py
-│   ├── test_components.py
-│   ├── test_self_evolution.py
-│   └── test_universal_coordinator.py
-├── examples/             # Example scripts and demos
-│   ├── validate_fibonacci.py
-│   ├── validate_diverse.py
-│   ├── mnist_loader.py
-│   ├── run_week_long_demo.py
-│   └── week_long_evolution.py
-├── docs/                 # Documentation
-│   ├── QUICK_START.md
-│   ├── DEPLOYMENT_GUIDE.md
-│   ├── NEUROPLASTICITY_DESIGN.md
-│   ├── UNIVERSAL_PRINCIPLES_ARCHITECTURE.md
-│   └── ...
-├── scripts/              # Utility scripts
-│   └── install_and_run.sh
-├── setup.py              # Package setup configuration
-├── requirements.txt      # Dependencies
-├── CONTRIBUTING.md       # Contribution guidelines
-├── LICENSE               # MIT License
-└── README.md            # This file
-```
+    ```
+    LJPW-Neural-Networks/
+    ├── ljpw_nn/              # Core library package
+    │   ├── __init__.py       # Package initialization and public API
+    │   ├── layers.py         # Neural network layers (FibonacciLayer, etc.)
+    │   ├── activations.py    # Activation functions (DiverseActivation, etc.)
+    │   ├── neuroplasticity.py    # Adaptive learning components
+    │   ├── homeostatic.py        # Self-regulating networks
+    │   ├── polarity_management.py # Balance systems
+    │   ├── seven_principles.py   # Seven Universal Principles
+    │   ├── universal_coordinator.py # Coordination system
+    │   ├── training.py       # Training utilities
+    │   └── visualizations.py # Visualization tools
+    ├── tests/                # Test suite
+    │   ├── test_backprop.py
+    │   ├── test_components.py
+    │   ├── test_self_evolution.py
+    │   └── test_universal_coordinator.py
+    ├── examples/             # Example scripts and demos
+    │   ├── validate_fibonacci.py
+    │   ├── validate_diverse.py
+    │   ├── mnist_loader.py
+    │   ├── run_week_long_demo.py
+    │   └── week_long_evolution.py
+    ├── docs/                 # Documentation
+    │   ├── QUICK_START.md
+    │   ├── DEPLOYMENT_GUIDE.md
+    │   ├── NEUROPLASTICITY_DESIGN.md
+    │   ├── UNIVERSAL_PRINCIPLES_ARCHITECTURE.md
+    │   └── ...
+    ├── scripts/              # Utility scripts
+    │   └── install_and_run.sh
+    ├── setup.py              # Package setup configuration
+    ├── requirements.txt      # Dependencies
+    ├── CONTRIBUTING.md       # Contribution guidelines
+    ├── LICENSE               # MIT License
+    └── README.md            # This file
+     ```
 
 ## Installation
 
@@ -540,4 +540,5 @@ Traditional ML optimizes for **accuracy** (P).
 We optimize for **harmony** (H = √[4]{L·J·P·W}).
 
 **That's what makes us different.**
+
 
