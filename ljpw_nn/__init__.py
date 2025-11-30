@@ -60,6 +60,9 @@ from .models import NaturalMNIST, TrainingHistory
 # Baseline models (for comparison)
 from .baseline import TraditionalMNIST
 
+# Data loaders
+from .mnist_loader import load_mnist
+
 __all__ = [
     'FibonacciLayer',
     'DiverseActivation',
@@ -81,4 +84,5 @@ __all__ = [
     'NaturalMNIST',
     'TraditionalMNIST',
     'TrainingHistory',
+    'load_mnist',
 ]

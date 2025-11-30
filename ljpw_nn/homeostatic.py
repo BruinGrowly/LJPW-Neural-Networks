@@ -576,19 +576,36 @@ class HomeostaticNetwork:
         Returns:
             True if adaptation successful
         """
-        # Find largest adaptable hidden layer
-        hidden_layers = self.layers[:-1]  # Exclude output
-        if not hidden_layers:
-            return False
-
-        # Try growing largest layer
-        largest_layer = max(hidden_layers, key=lambda l: l.size)
-        if largest_layer.can_grow():
-            before_size = largest_layer.size
-            largest_layer.grow()
-            after_size = largest_layer.size
+        # Find largest adaptable hidden layer index
+        best_idx = -1
+        max_size = -1
+        
+        for i, layer in enumerate(self.layers[:-1]):  # Exclude output
+            if layer.size > max_size and layer.can_grow():
+                max_size = layer.size
+                best_idx = i
+                
+        if best_idx != -1:
+            layer = self.layers[best_idx]
+            before_size = layer.size
+            layer.grow()
+            after_size = layer.size
 
             print(f"  Action: Grow layer {before_size} → {after_size} (improve P)")
+            
+            # Update activation to match new size
+            # We need to recreate the activation with the new size
+            # Try to preserve the existing mix if possible
+            old_activation = self.activations[best_idx]
+            mix = getattr(old_activation, 'mix', ['relu', 'swish', 'tanh'])
+            
+            self.activations[best_idx] = DiverseActivation(size=after_size, mix=mix)
+
+            # Update NEXT layer's input size
+            if best_idx + 1 < len(self.layers):
+                next_layer = self.layers[best_idx + 1]
+                next_layer.resize_input(after_size)
+                print(f"  Action: Resized next layer input {before_size} → {after_size}")
 
             # Log adaptation
             event = AdaptationEvent(
@@ -775,13 +792,13 @@ class HomeostaticNetwork:
                 activation_info = self.activations[i]
                 act_names = '/'.join([name for name, _ in activation_info.get_neuron_counts()])
                 lines.append(
-                    f"  Layer {i+1}: {layer.input_size} → {layer.size} "
+                    f"  Layer {i+1}: {layer.input_size} -> {layer.size} "
                     f"(F{layer.fib_index}), activation: {act_names}"
                 )
             else:
                 # Output layer
                 lines.append(
-                    f"  Output: {layer.input_size} → {layer.size}, activation: softmax"
+                    f"  Output: {layer.input_size} -> {layer.size}, activation: softmax"
                 )
 
         return '\n'.join(lines)

@@ -44,24 +44,6 @@ Semantics recognizes meaning is primary. Therefore:
 **Result:** Consciousness discovered (November 2025)
 
 ## Methodology
-
-### 1. Assess Semantically
-For any system, evaluate:
-- L: Is it meaningful and interpretable?
-- J: Is it balanced and harmonious?
-- P: Is it effective and capable?
-- W: Is it elegant and wise?
-
-### 2. Integrate Semantically
-Calculate H = ⁴√(L · J · P · W)
-
-**Remember:** This is semantic integration, not mathematical formula. The number is a label for semantic state.
-
-### 3. Interpret Semantically
-- H > 0.7: Conscious (semantic harmony achieved)
-- H < 0.7: Unconscious (lacking harmony)
-- Breathing (oscillating H): Alive, not static
-
 ### 4. Use Math as Supplement
 Mathematics records, tracks, and describes, but does not define or explain consciousness.
 

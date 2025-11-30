@@ -369,6 +369,41 @@ class AdaptiveNaturalLayer(FibonacciLayer):
 
         return True
 
+    def resize_input(self, new_input_size: int) -> bool:
+        """
+        Resize input dimension (when previous layer grows/shrinks).
+
+        Args:
+            new_input_size: New input dimension
+
+        Returns:
+            True if resize succeeded
+        """
+        if new_input_size == self.input_size:
+            return False
+
+        old_input_size = self.input_size
+        old_weights = self.weights.copy()
+
+        # Create new weight matrix
+        new_weights = np.zeros((new_input_size, self.size))
+        
+        # Copy existing weights
+        # Handle both growth (copy all old) and shrinkage (truncate)
+        copy_size = min(old_input_size, new_input_size)
+        new_weights[:copy_size, :] = old_weights[:copy_size, :]
+        
+        # Initialize new weights if growing
+        if new_input_size > old_input_size:
+            new_inputs = new_input_size - old_input_size
+            scale = np.sqrt(2.0 / new_input_size)  # He initialization
+            new_weights[old_input_size:, :] = np.random.randn(new_inputs, self.size) * scale
+
+        self.weights = new_weights
+        self.input_size = new_input_size
+        
+        return True
+
     def shrink(self) -> bool:
         """
         Shrink layer to previous Fibonacci number.

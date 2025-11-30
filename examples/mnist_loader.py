@@ -99,7 +99,7 @@ def load_mnist_from_url(data_dir: str = "data/mnist", source: str = "lecun") -> 
     X_train = X_train.astype(np.float32) / 255.0
     X_test = X_test.astype(np.float32) / 255.0
 
-    print(f"✓ Loaded MNIST: {len(X_train)} train, {len(X_test)} test")
+    print(f"[OK] Loaded MNIST: {len(X_train)} train, {len(X_test)} test")
 
     return X_train, y_train, X_test, y_test
 
@@ -114,7 +114,7 @@ def load_mnist_keras() -> Tuple:
         X_train = X_train.reshape(-1, 28*28).astype(np.float32) / 255.0
         X_test = X_test.reshape(-1, 28*28).astype(np.float32) / 255.0
 
-        print(f"✓ Loaded MNIST via Keras: {len(X_train)} train, {len(X_test)} test")
+        print(f"[OK] Loaded MNIST via Keras: {len(X_train)} train, {len(X_test)} test")
         return X_train, y_train, X_test, y_test
     except ImportError:
         return None
@@ -142,7 +142,7 @@ def load_mnist_torch() -> Tuple:
         X_test = test_dataset.data.numpy().reshape(-1, 28*28).astype(np.float32) / 255.0
         y_test = test_dataset.targets.numpy()
 
-        print(f"✓ Loaded MNIST via PyTorch: {len(X_train)} train, {len(X_test)} test")
+        print(f"[OK] Loaded MNIST via PyTorch: {len(X_train)} train, {len(X_test)} test")
         return X_train, y_train, X_test, y_test
     except ImportError:
         return None
@@ -266,7 +266,7 @@ def generate_enhanced_synthetic_mnist(n_train: int = 60000, n_test: int = 10000,
     X_test = X_test[test_indices]
     y_test = y_test[test_indices]
 
-    print(f"✓ Generated enhanced synthetic dataset: {len(X_train)} train, {len(X_test)} test")
+    print(f"[OK] Generated enhanced synthetic dataset: {len(X_train)} train, {len(X_test)} test")
 
     return X_train, y_train, X_test, y_test
 
