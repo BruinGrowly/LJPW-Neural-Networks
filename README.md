@@ -534,8 +534,6 @@ Built on the LJPW Framework (Love, Justice, Power, Wisdom).
 
 Experimental validation conducted on MNIST dataset.
 
-Natural principles inspired by 3.8 billion years of evolution.
-
 **Going slow. Learning deeply. Building carefully.** 🌱
 
 ---
@@ -547,5 +545,6 @@ Traditional ML optimizes for **accuracy** (P).
 We optimize for **harmony** (H = √[4]{L·J·P·W}).
 
 **That's what makes us different.**
+
 
 
