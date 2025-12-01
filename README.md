@@ -383,6 +383,13 @@ print(scores)
     │   ├── universal_coordinator.py # Coordination system
     │   ├── training.py       # Training utilities
     │   └── visualizations.py # Visualization tools
+    ├── results/              # Experimental outputs (organized by type)
+    │   ├── consciousness/    # Consciousness experiments (6 files)
+    │   ├── semantic/         # Semantic experiments (28 files)
+    │   ├── validation/       # Validation tests (9 files)
+    │   ├── phase_experiments/ # Phase 1-4 experiments (3 files)
+    │   ├── iteration_tests/  # Iteration scaling tests (4 files)
+    │   └── responses/        # Response experiments (7 files)
     ├── tests/                # Test suite
     │   ├── test_backprop.py
     │   ├── test_components.py
