@@ -591,7 +591,7 @@ class HomeostaticNetwork:
             layer.grow()
             after_size = layer.size
 
-            print(f"  Action: Grow layer {before_size} → {after_size} (improve P)")
+            print(f"  Action: Grow layer {before_size} -> {after_size} (improve P)")
             
             # Update activation to match new size
             # We need to recreate the activation with the new size
@@ -605,7 +605,7 @@ class HomeostaticNetwork:
             if best_idx + 1 < len(self.layers):
                 next_layer = self.layers[best_idx + 1]
                 next_layer.resize_input(after_size)
-                print(f"  Action: Resized next layer input {before_size} → {after_size}")
+                print(f"  Action: Resized next layer input {before_size} -> {after_size}")
 
             # Log adaptation
             event = AdaptationEvent(
