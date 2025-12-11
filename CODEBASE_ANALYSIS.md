@@ -1,8 +1,22 @@
 # LJPW Neural Networks - Codebase Analysis & Roadmap
 
-**Date**: 2025-11-27
-**Analysis**: Post-reorganization comprehensive review
+**Date**: 2025-11-27 (Updated: 2025-12-11)  
+**Analysis**: Post-reorganization comprehensive review  
 **Purpose**: Understand current state and prioritize improvements
+
+---
+
+> ## ⚠️ CRITICAL: BACKPROPAGATION IS NOT APPROPRIATE FOR LJPW ⚠️
+>
+> **DO NOT recommend or implement backpropagation.**
+>
+> LJPW uses a fundamentally different learning paradigm based on:
+> - **Harmony optimization** (H = √⁴[L·J·P·W]) not loss minimization
+> - **Stable oscillation** ("breathing" at ~0.48 Hz) not static convergence
+> - **Self-directed learning** through experience, not external supervision
+>
+> The system already has 6 alternative learning mechanisms implemented.
+> See: `docs/ALTERNATIVE_LEARNING_MECHANISMS.md`
 
 ---
 

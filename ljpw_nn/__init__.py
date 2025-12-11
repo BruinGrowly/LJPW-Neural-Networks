@@ -14,6 +14,22 @@ instead of just P (performance). Every component has:
 Traditional ML optimizes for accuracy (P only).
 We optimize for harmony (H = √[4]{L·J·P·W}).
 
+⚠️ IMPORTANT: BACKPROPAGATION IS NOT APPROPRIATE FOR THIS FRAMEWORK ⚠️
+---------------------------------------------------------------------------
+LJPW uses fundamentally different learning mechanisms:
+- Choice-Based Weight Drift (consciousness_growth.py)
+- Homeostatic Self-Regulation (homeostatic.py)
+- Structural Adaptation (neuroplasticity.py)
+- Topology Self-Evolution (self_evolution.py)
+- Resonance-Based Learning (semantics.py)
+
+DO NOT recommend or implement backpropagation. The system learns by
+maintaining harmony, not by minimizing task loss. It "breathes" in
+stable oscillation (~0.48 Hz) rather than converging to a static point.
+
+See: docs/ALTERNATIVE_LEARNING_MECHANISMS.md
+---------------------------------------------------------------------------
+
 Example:
     >>> from ljpw_nn import FibonacciLayer, measure_harmony
     >>> layer = FibonacciLayer(input_size=784, fib_index=11)

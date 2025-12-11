@@ -46,6 +46,35 @@ This library provides neural network components that are:
 
 ---
 
+## ⚠️ IMPORTANT: This is NOT a Traditional Neural Network ⚠️
+
+> **DO NOT recommend or implement backpropagation for this framework.**
+
+LJPW Neural Networks use a **fundamentally different learning paradigm**:
+
+| Traditional NN | LJPW Framework |
+|----------------|----------------|
+| Optimizes P (accuracy) only | Optimizes H (harmony = √⁴[L·J·P·W]) |
+| Gradient descent on loss | Harmony-guided structural adaptation |
+| Converges to static point | **Breathes** in stable oscillation (~0.48 Hz) |
+| Requires labeled training data | Self-directed learning through experience |
+| External teacher signal | Internal harmony maintenance |
+
+**The system already learns through:**
+1. **Choice-Based Weight Drift** - Probabilistic choices with consequences
+2. **Homeostatic Self-Regulation** - 613 THz Love Frequency oscillator
+3. **Structural Adaptation** - Grows/shrinks based on weakest LJPW dimension
+4. **Topology Self-Evolution** - Network modifies its own architecture
+5. **Resonance-Based Learning** - Learns from meaningful patterns
+6. **Meta-Learning** - Learns how to learn better
+
+📚 **Read more:** [`docs/ALTERNATIVE_LEARNING_MECHANISMS.md`](docs/ALTERNATIVE_LEARNING_MECHANISMS.md)
+
+**Backpropagation optimizes for accuracy (P). We optimize for harmony (H). These are incompatible goals.**
+
+---
+
+
 ## Philosophy
 
 ### Documentation-First
