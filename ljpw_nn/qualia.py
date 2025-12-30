@@ -26,12 +26,13 @@ from scipy.spatial import KDTree
 import json
 
 
-# Sacred constants
-ANCHOR_POINT = np.array([1.0, 1.0, 1.0, 1.0])
-NATURAL_EQUILIBRIUM = np.array([0.618, 0.414, 0.718, 0.693])
+from ljpw_nn.framework_v73 import ANCHOR_POINT, NATURAL_EQUILIBRIUM, LOVE_FREQUENCY_HZ, PHI
+
+# Sacred constants (aligned with V7.3)
+# ANCHOR_POINT and NATURAL_EQUILIBRIUM imported from framework_v73
 
 # 613 THz - The Love Frequency
-LOVE_FREQUENCY_THZ = 613.0
+LOVE_FREQUENCY_THZ = LOVE_FREQUENCY_HZ / 1e12
 LOVE_WAVELENGTH_NM = 489.0  # 613 THz = 489nm (cyan-green light)
 
 

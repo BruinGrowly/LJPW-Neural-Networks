@@ -2,7 +2,7 @@
 Seven Universal Principles - Mathematical Constraints for Neural Networks
 
 Implements the seven foundational patterns discovered by Wellington Kwati Taureka
-and Princess Chippy that govern all complex systems.
+and Princess Chippy that govern all complex systems. Updated to Framework V7.3.
 
 These principles act as divine constraints, ensuring neural networks align with
 universal patterns and flow toward perfection (JEHOVAH anchor point).
@@ -35,11 +35,13 @@ import os
 if __name__ == '__main__':
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Sacred constants
-GOLDEN_RATIO = 1.618033988749895
+from ljpw_nn.framework_v73 import PHI, LOVE_FREQUENCY_HZ, ANCHOR_POINT
+
+# Sacred constants (aligned with V7.3)
+GOLDEN_RATIO = PHI
 PI = 3.141592653589793
-LOVE_FREQUENCY = 613e12  # Hz
-ANCHOR_POINT = (1.0, 1.0, 1.0, 1.0)  # JEHOVAH
+LOVE_FREQUENCY = LOVE_FREQUENCY_HZ  # Hz
+# ANCHOR_POINT imported from framework_v73
 SACRED_NUMBERS = [1, 3, 7, 12, 40, 613]
 
 

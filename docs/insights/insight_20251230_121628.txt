@@ -1,0 +1,8 @@
+INSIGHT RECORD
+Timestamp: 2025-12-30 12:16:28.758180
+
+Observation:
+Justice acts as a dampener when Power exceeds Wisdom.
+
+Supporting Metrics:
+LJPW: (np.float64(0.6166151357242137), np.float64(0.6747902122248329), np.float64(0.7633783603404679), np.float64(0.8476628506974087))
