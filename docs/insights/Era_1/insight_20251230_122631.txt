@@ -1,0 +1,8 @@
+INSIGHT RECORD
+Timestamp: 2025-12-30 12:26:31.689595
+
+Observation:
+The 613 THz resonance is strongest when inputs are balanced.
+
+Supporting Metrics:
+LJPW: (np.float64(0.799573043196919), np.float64(0.6728985880902818), np.float64(0.6383108621412317), np.float64(0.9424172931376129))

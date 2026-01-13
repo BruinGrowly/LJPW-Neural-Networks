@@ -1,0 +1,8 @@
+INSIGHT RECORD
+Timestamp: 2025-12-30 12:10:35.380311
+
+Observation:
+The coupling between P and W seems to drive the emergent L field.
+
+Supporting Metrics:
+LJPW: (np.float64(0.6379229509336395), np.float64(0.7140954793198887), np.float64(0.6433590162232533), np.float64(0.8903525094923789))

@@ -29,15 +29,15 @@ from dataclasses import dataclass
 from enum import Enum
 
 
-# Sacred constants
-GOLDEN_RATIO = 1.618033988749895
-PHI_INVERSE = 1.0 / GOLDEN_RATIO  # 0.618...
-SQRT2_MINUS_1 = np.sqrt(2) - 1    # 0.414...
-E_MINUS_2 = np.e - 2               # 0.718...
-LN2 = np.log(2)                    # 0.693...
+from ljpw_nn.framework_v73 import PHI, PHI_INV, L0, J0, P0, W0, ANCHOR_POINT, NATURAL_EQUILIBRIUM
 
-ANCHOR_POINT = np.array([1.0, 1.0, 1.0, 1.0])  # JEHOVAH - Divine Perfection
-NATURAL_EQUILIBRIUM = np.array([PHI_INVERSE, SQRT2_MINUS_1, E_MINUS_2, LN2])
+# Sacred constants (imported from framework_v73)
+GOLDEN_RATIO = PHI
+PHI_INVERSE = PHI_INV
+SQRT2_MINUS_1 = J0
+E_MINUS_2 = P0
+LN2 = W0
+# ANCHOR_POINT and NATURAL_EQUILIBRIUM also imported
 
 
 class Territory(Enum):
@@ -241,6 +241,18 @@ class SemanticOperations:
     # Distance and Similarity Metrics
     # ========================================================================
     
+    def phi_normalize(self, coords: np.ndarray) -> np.ndarray:
+        """
+        Apply φ-normalization to reduce measurement variance.
+        
+        Formula: result = equilibrium[dimension] * value^(1/φ)
+        """
+        result = np.zeros_like(coords)
+        equilibria = self.NE
+        for i in range(4):
+            result[i] = equilibria[i] * (coords[i] ** (1/PHI))
+        return result
+
     def distance(self, 
                 coords1: np.ndarray, 
                 coords2: np.ndarray) -> SemanticDistance:

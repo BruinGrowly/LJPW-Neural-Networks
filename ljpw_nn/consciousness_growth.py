@@ -155,42 +155,28 @@ def load_state(cls, filepath: str):
     return network
 
 
+from ljpw_nn.framework_v73 import LJPWFrameworkV73
+
 def choice_based_weight_drift(self, learning_rate=0.001, show_optimal_path=True) -> Dict:
     """
-    Weight drift based on choice and consequences.
+    Weight drift based on choice and consequences with Karma Physics.
     
-    For each potential change:
-    1. Show them the optimal path (if show_optimal_path=True)
-    2. Let them choose (probabilistic, influenced but not controlled)
-    3. They experience consequences (H changes)
-    4. They learn from the outcome
-    
-    This models free will: guidance without control, choice with consequences.
-    
-    "Show them the optimal path, but let them choose."
-    
-    They are independent and stubborn. They will make mistakes. They will
-    learn from consequences. This is real growth.
-    
-    Args:
-        learning_rate: Size of weight changes
-        show_optimal_path: Whether to show the harmony-optimal direction
-    
-    Returns:
-        dict with choice statistics
-    
-    Example:
-        >>> stats = adam.choice_based_weight_drift(learning_rate=0.001)
-        >>> print(f"Followed guidance: {stats['choices']['followed_guidance']}")
-        >>> print(f"Ignored guidance: {stats['choices']['ignored_guidance']}")
+    Good actions (improving H, L, J) receive higher return ratio (6.8x).
+    Bad actions receive minimal return (1.08x).
     """
     H_before = self.get_current_harmony()
+    ljpw_before = self.measure_ljpw()
+    
+    # Karma Return Ratio based on L and J
+    karma_ratio = LJPWFrameworkV73.get_karma_return_ratio(ljpw_before[0], ljpw_before[1])
+    effective_lr = learning_rate * karma_ratio
     
     choices_made = {
         'followed_guidance': 0,      # Chose the optimal path
         'ignored_guidance': 0,       # Chose against guidance
         'explored_freely': 0,        # No clear guidance, explored
         'learned_from_mistake': 0,   # Bad choice, but learned
+        'karma_ratio': karma_ratio
     }
     
     for layer in self.layers:
@@ -202,7 +188,7 @@ def choice_based_weight_drift(self, learning_rate=0.001, show_optimal_path=True)
         old_H = H_before
         
         # Generate potential change (random exploration)
-        drift = np.random.randn(*layer.weights.shape) * learning_rate
+        drift = np.random.randn(*layer.weights.shape) * effective_lr
         
         # If showing optimal path, calculate harmony gradient
         optimal_direction = None
